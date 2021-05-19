@@ -3,7 +3,7 @@
 #define MAXIMUM_LENGTH 32
 
 typedef struct{
-    char *buffer_reader;
+    char buffer_reader;
 }buffer_reader_t;
 
 typedef struct{
