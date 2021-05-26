@@ -1,0 +1,106 @@
+Cado will support:
+
+1. In source file comments:
+    Purpose:
+        Comments in a source file are useful to maintain programs. You never write code for yourself but for the next sorry bastard that is trying to fix something you were too smart to anticipate.
+
+    This is very common in computer languages. For example, in C and Java, all characters after "//" are ignored and not interpreted/compiled. Blocks of comments are also commonly supported. For example, in Python, all characters between a triplet ' or " are ignoed and not interpreted/compiled. The intended reader of comments is a human, not a compiler. If you know of a machine capable of understanding, let me know. I want to ask it why humans hate for no reason, but need to justify their love.
+
+    The token Cado will use to signify the start of an in-line comment is "#", like in Python.
+        # This is an in-line comment in Cado
+    The token Cado will use to signify the start and end of a comment block is a triplet of "'".
+        ''' This is a comment block in Cado '''
+
+        '''
+            So is this
+        '''
+
+        '''
+        ''' This is not
+        '''
+
+        '''
+            '''
+                Neither is this, Cado will not support imbedded comment block
+            '''
+        '''
+
+2. Object Oriented classes and methods:
+    Purpose:
+        The Object Oriented paradigm is a popular approach to fast and concise software development. With objects, Cado will support inheritance.
+
+    In Java, objects are implemented in such a way that inheritance can also be supported.
+
+    Cado will support inheritance in the following way:
+
+        # Example of a class in Cado
+        noun classA extends(classB classC)[
+            verb real methodA real inputA discrete inputB[
+                # Instructions
+                return 1
+            ]
+        ]
+
+3. Arithmetic operations:
+    Purpose:
+        Repetitive arithmetic operations were the original problem computers were design to assist in. Instead of having a human attempt to solve a problem computationally, computers were invented to assist in repetitive computations.
+
+    All modern computer languages support four basic arithmetic operations:
+        + Addition
+        - Subtraction
+        / Division
+        * Multiplication
+
+    Cado will support these four arithmetic operations following a common set of precidence:
+        FIRST:  * OR /
+        SECOND: + OR -
+
+4. Logical operations:
+    Purpose:
+        Logic can be used to direct flow or check validity of a condition.
+
+    Many modern computer languages support logical operation. The following symbols are used in Python:
+        not - Reverse logical bit
+        is  - Check data type
+        <   - Less than
+        >   - Greater than
+        ==  - Equal to
+
+    Python has logical operators to express logic;
+    # Print 'False' if valueA is not of the same type as valueB
+    if not valueA is valueB:
+        print('False')
+
+    # Print 'True' if valueA is not 0
+    if valueA:
+        print('True')
+
+    # Print 'True' if valueA equals valueB
+    if valueA == valueB:
+        print('True')
+
+    # Print 'False' if valueA does not equal valueB
+    if valueA != valueB:
+        print('False')
+
+    Cado will 
+
+5. Looping:
+    Purpose:
+        Instead of writing repeated lines for the same operation, we can create loops to repeat commands.
+
+    In C, this is very simple;
+        int maximum = 10;
+        int counter = 0;
+        for (counter; counter < maximum; counter++){
+            // Instructions
+        }
+
+    In Cado, only the for-loop is supported:
+        discrete start  = 0
+        discrete finish = 10
+        discrete step   = 1
+        for start, finish, step[
+            # Instructions
+        ]
+    This for-loop would start at '0', and increment start by the value stored in step, until start is greater than finish.

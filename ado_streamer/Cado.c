@@ -1,9 +1,13 @@
+#include <regex.h>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "buffer_reader.h"
 
-int tokenize(FILE *);
+#include "buffer_reader.h"
+#include "../ado_grammar/all_tokens.h"
+
+int tokenize(FILE *given_input_file);
+void match_token(char char_to_match, char match_type[]);
 
 int main(int argc, char ** argv){
     if(argc < 2){
@@ -35,7 +39,27 @@ int tokenize(FILE *given_input_file){
 
     while((buffer_reader->buffer_reader = fgetc(given_input_file)) != EOF){
         putchar(buffer_reader->buffer_reader);
+        match_token(buffer_reader->buffer_reader, string_read->string_read);
     }
 
+    free(buffer_reader);
+    buffer_reader = NULL;
+    free(string_read);
+    string_read = NULL;
+
     return 1;
+}
+
+void match_token(char char_to_match, char match_type[]){
+    all_tokens_t *all_tokens = (all_tokens_t *) malloc(sizeof(all_tokens));
+
+    all_tokens->BEGIN_LINE_COMMENT = "#";
+
+    switch(char_to_match){
+        case all_tokens->BEGIN_LINE_COMMENT:
+            printf("MATCHED <#>\n");
+        break;
+    }
+
+    return;
 }
