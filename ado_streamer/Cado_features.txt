@@ -9,7 +9,7 @@ Cado will support:
     The token Cado will use to signify the start of an in-line comment is "#", like in Python.
         # This is an in-line comment in Cado
     The token Cado will use to signify the start and end of a comment block is a triplet of "'".
-        ''' This is a comment block in Cado '''
+        ''' This is a legal comment block in Cado '''
 
         '''
             So is this
@@ -29,7 +29,17 @@ Cado will support:
     Purpose:
         The Object Oriented paradigm is a popular approach to fast and concise software development. With objects, Cado will support inheritance.
 
-    In Java, objects are implemented in such a way that inheritance can also be supported.
+    In Java, objects are implemented in such a way that inheritance can also be supported:
+
+        class classA{
+            public int classA_field = 999;
+        }
+
+        class classB extends classA{
+            // classB_field will now contain the int value 999
+            public int classB_field = classA_field;
+        }
+
 
     Cado will support inheritance in the following way:
 
@@ -46,12 +56,14 @@ Cado will support:
         Repetitive arithmetic operations were the original problem computers were design to assist in. Instead of having a human attempt to solve a problem computationally, computers were invented to assist in repetitive computations.
 
     All modern computer languages support four basic arithmetic operations:
+
         + Addition
         - Subtraction
         / Division
         * Multiplication
 
     Cado will support these four arithmetic operations following a common set of precidence:
+
         FIRST:  * OR /
         SECOND: + OR -
 
@@ -60,36 +72,77 @@ Cado will support:
         Logic can be used to direct flow or check validity of a condition.
 
     Many modern computer languages support logical operation. The following symbols are used in Python:
+
         not - Reverse logical bit
         is  - Check data type
         <   - Less than
         >   - Greater than
         ==  - Equal to
 
-    Python has logical operators to express logic;
-    # Print 'False' if valueA is not of the same type as valueB
-    if not valueA is valueB:
-        print('False')
+    Python has logical operators to express logic:
 
-    # Print 'True' if valueA is not 0
-    if valueA:
-        print('True')
+        # Print 'False' if valueA is not of the same type as valueB
+        if not valueA is valueB:
+            print('False')
 
-    # Print 'True' if valueA equals valueB
-    if valueA == valueB:
-        print('True')
+        # Print 'True' if valueA is not logically False
+        if valueA:
+            print('True')
 
-    # Print 'False' if valueA does not equal valueB
-    if valueA != valueB:
-        print('False')
+        # Print 'True' if valueA equals valueB
+        if valueA == valueB:
+            print('True')
 
-    Cado will 
+        # Print 'False' if valueA does not equal valueB
+        if valueA != valueB:
+            print('False')
+
+        # Print 'valueA' if valueA is strictly greater than valueB
+        if valueA > valueB:
+            print('valueA')
+
+        # Print 'valueA' if valueA is strictly greater than valueB
+        if valueA > valueB:
+            print('valueA')
+
+    Cado will support the same logical operators as Python:
+
+        # Print 'False' if valueA is not of the same type as valueB
+        if not valueA is valueB[
+            print('False')
+        ]
+
+        # Print 'True' if valueA is not logically False
+        if valueA[
+            print('True')
+        ]
+
+        # Print 'True' if valueA equals valueB
+        if valueA == valueB[
+            print('True')
+        ]
+
+        # Print 'False' if valueA does not equal valueB
+        if valueA != valueB[
+            print('False')
+        ]
+
+        # Print 'valueA' if valueA is strictly greater than valueB
+        if valueA > valueB[
+            print('valueA')
+        ]
+
+        # Print 'valueA' if valueA is strictly greater than valueB
+        if valueA > valueB[
+            print('valueA')
+        ]
 
 5. Looping:
     Purpose:
         Instead of writing repeated lines for the same operation, we can create loops to repeat commands.
 
-    In C, this is very simple;
+    In C, this is very simple:
+
         int maximum = 10;
         int counter = 0;
         for (counter; counter < maximum; counter++){
@@ -97,6 +150,7 @@ Cado will support:
         }
 
     In Cado, only the for-loop is supported:
+
         discrete start  = 0
         discrete finish = 10
         discrete step   = 1
@@ -104,3 +158,40 @@ Cado will support:
             # Instructions
         ]
     This for-loop would start at '0', and increment start by the value stored in step, until start is greater than finish.
+
+6. If-statements:
+    Purpose:
+        Conditional execution of code allows programs to make decision during run-time and makes a program more flexible.
+
+    Most modern languages support if-statements. In C, an if-statement is very simple:
+
+        # Simple if-statement in C
+        if(1){
+            printf("Hello World!\n");
+        }
+
+    Most modern languages also support else-statements. Else-statements must proceed an if-statement scope. Cado will not support else-statements or else-if-statements. An if-statement in Cado might look like:
+    # Call a function if the value of the expression in the if-statement is non-zero
+    discrete variableA = 1;
+    if (variableA)[
+        MyNoun.myVerb()
+    ]
+
+7. Data types:
+    Purpose:
+        In order to have deterministic behavior when performing arithmetic and logical operations, we must know the objects we want to sum, divide, negate, etc. One way to define behavior for these operations, is to explicitly restrict certain operations to specific data types. For example, this limits the arithmetic operators to only accept addition of a number with another number.
+
+        In C, you may not "sum" a number data type with a char:
+
+            int number_variable = 1;
+            char char_variable = 'x';
+            int result = NULL;
+            // By design, this is undefined behavoir in C during data type checking in compile time
+            result = number_variable + char_variable;
+
+        The data types Cado will support are:
+
+            discrete - May only be a positive or negative integer.
+            real     - May be any positive or negative real number.
+            logic    - Reserved specifically for the keywords: "TRUE" and "FALSE". TRUE will only be the decimal 1, and
+                       FALSE will only be the decimal 0. This is the only data type allowed in if-statements. At the end of evaluation expression for the conditional check of an if-statement, a "logic" data type is required.
